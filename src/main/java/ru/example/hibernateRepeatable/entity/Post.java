@@ -1,9 +1,6 @@
 package ru.example.hibernateRepeatable.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 
@@ -28,8 +25,6 @@ C помощью сеттеров заполняет нужные поля об�
  "-" все действия фремворка по инициализации классов, формированию запросов и конвертации результатов
  замедляют скорость обработки данных
 
-
-
  */
 
 @Entity
@@ -38,12 +33,15 @@ C помощью сеттеров заполняет нужные поля об�
 public class Post {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "message")
     private String message;
 
+    @Transient //поле не будет обрабатываться ORM
+    private String someField;
 
 
 }
