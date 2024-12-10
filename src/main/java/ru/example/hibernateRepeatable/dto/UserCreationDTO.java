@@ -1,4 +1,4 @@
-package ru.example.hibernateRepeatable.entity;
+package ru.example.hibernateRepeatable.dto;
 
 import java.util.List;
 

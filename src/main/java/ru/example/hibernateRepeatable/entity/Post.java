@@ -42,6 +42,4 @@ public class Post {
 
     @Transient //поле не будет обрабатываться ORM
     private String someField;
-
-
 }
