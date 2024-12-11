@@ -1,28 +1,28 @@
-package ru.example.hibernateRepeatable.entity;
+package ru.example.hibernateRepeatable.item;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "items")
-@Getter
-@Setter
-@ToString
+@Getter @Setter @ToString
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
-    @Column(name = "name", length = 128)
-    String name;
+    @Column(name= "user_id")
+    private Long userId;
 
-    @ElementCollection //позволяет свзяать сущность Item с ее тегами, как будто это список строк
+    @Column
+    private String url;
+
+    @ElementCollection
     @CollectionTable(name="tags", joinColumns=@JoinColumn(name="item_id"))
     @Column(name="name")
     private Set<String> tags = new HashSet<>();
